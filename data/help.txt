@@ -1,0 +1,18 @@
+Help Guide
+
+General Commands
++-------+----------------------------------------------------------------------+
+|cls    | Clear terminal                                                       |
+|calc   | Commissions price calculator                                         |
+|del    | Deletes file                                                         |
+|edit   | Launch BLEdit software                                               |
+|exit   | Ends BLISS session                                                   |
+|help   | Displays this guide OR input help [command] for specific help        |
+|info   | Displays current build information                                   |
+|list   | Lists current directory contents                                     |
+|man    | Launches BLISS manual viewer                                         |
+|mdir   | Make directory at file path                                          |
+|outf   | Display file contents to terminal                                    |
+|rc     | BLISS Recompiling tool (Recompiles RC)                               |
+|rdir   | Removes directory at file path                                       |
++-------+----------------------------------------------------------------------+

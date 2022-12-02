@@ -1,0 +1,84 @@
+Changelog November 24, 2022 17:31
+CrystalCraft Studios
+
+Changes:
+--------------------------------------------------------------------------------
+bliss.c {
+    Added new method of managing commands and apps.
+    Reduced file size by over 50% from v1.0.
+    Fixed issue where windows support was difficult to add to BLISS.
+}
+cls.c {
+    cls command introduced as applet for the first time.
+    Wrote cls.c to operate for linux/mac operating systems.
+}
+del.c {
+    del command introduced as applet for the first time.
+    Wrote del.c to operate for linux/mac operating systems.
+}
+help.c {
+    Removed hard-coded table drawing system from help to improve efficiency
+    Help now relies on outf.c to display data/help.txt file.
+}
+info.c {
+    Compressed code significantly for temporary use.
+}
+list.c {
+    info command introduced as applet for the first time.
+    Wrote del.c to support linux/mac operating systems. 
+}
+mdir.c {
+    mdir command introduced as applet for the first time.
+    Wrote mdir.c to support linux/mac operating systems.
+}
+rc.c {
+    Added more compile commands.
+}
+rdir.c {
+    rdir command introduced as applet for the first time.
+    Wrote rdir.c to support linux/mac operating systems.
+}
+
+
+
+Issues:
+--------------------------------------------------------------------------------
+bliss.c {
+    No longer can run system commands due to current limit of 2 tokens per input.
+}
+info.c {
+    Current version of info command does not offer efficient app management, requiring many lines of code to be edited or made to install an app.
+    Current version does not rely on the updated method of application installation introduced in bliss.c app.
+}
+man.c {
+    Current version relies on text output methods, making it messy and inefficient.
+    Current version makes it significantly more difficult to update the manual file itself. 
+    Current version of man.c is significantly outdated thanks to software updates on other apps.
+}
+outf.c {
+    Current version reads entire text file at once, instead of line-by-line, making it hard to support large file loads.
+}
+rc.c {
+    Current version does not support modern apps.txt file list reading, and thus forces hard-coded compile commands.
+}
+
+
+
+Plan:
+--------------------------------------------------------------------------------
+edit.c {
+    Fix file reading algorithm, and keep track of line number to allow loading of a particular line in a text file, as well as replacement of lines.
+}
+info.c {
+    Add support for apps.txt file, rather than hard-coded functions.
+}
+man.c {
+    Update manual to text file chapters in data/man folder. 
+    Update manual itself to include all new updates.
+}
+outf.c {
+    Fix file loading issue, allowing one line to be read at once, allowing reading of longer lines and longer files.
+}
+project {
+    Needs new versions of cls, del, list, mdir, and rdir for windows. 
+}

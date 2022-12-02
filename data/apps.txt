@@ -1,0 +1,12 @@
+cls
+calc
+del
+edit
+help
+info
+list
+man
+mdir
+outf
+rc
+rdir

@@ -1,0 +1,6 @@
+BLISS Manual 
+
+
+Error codes: 
+    APPS-00: Missing data/apps.txt file. Fix: Create bliss/data/apps.txt file, or check that it exists.
+    
