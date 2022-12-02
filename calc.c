@@ -1,6 +1,9 @@
 //CALC (Commission Calculator) V1.0
 //CrystalCraft Studios 2022
 
+//If you find yourself reading this, I am a writer on the side, and wrote this to test BLISS' app install tools, and to calculate commission prices with an app,
+//rather than by calculator.
+
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
