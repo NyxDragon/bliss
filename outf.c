@@ -20,17 +20,18 @@ int main(int argc, char **argv) {
     
     FILE *openFile = fopen(filePath, "r");
     free(filePath);
+    
     if(!openFile) {
     printf("\nError opening file: Does not exist.\n\n");
-    }
+    } 
     else {
-        while(1) {
-            char tempBuf[1024];
-            if(!fgets(tempBuf, 1024, openFile)) break;
-            printf("%s", tempBuf);
+        if (argv[1][strlen(argv[1]) - 1] == '\n') argv[1][strlen(argv[1]) - 1] = '\0'; //strip newline char from command if present
+
+        char readLine[1024];
+        while(fgets(readLine, sizeof(readLine), openFile)) { //read line of text and compare to input command
+        if(readLine[strlen(readLine) - 1] == '\n') readLine[strlen(readLine) - 1] = '\0'; //strip newline char from lines
+        printf("%s\n", readLine); //Yes, I know this undoes the newline that I just removed, buuuuuut its to ensure 100% of lines have one newline instead of having some lines have none and feel left out.
         }
-        fclose(openFile);
-        printf("\n");
     }
     return 0;
 }

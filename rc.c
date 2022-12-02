@@ -43,25 +43,5 @@ int main(int argc, char **argv) {
       }
     }
     fclose(openFile);
-
-    /*
-    else if(argc >= 2 && !strcmp(argv[1], "h")) printf("Recompilable apps:\nALL\nCALC\nEDIT\nINFO\nMAN\nOUTF\n\n"); //outdated
-
-    else if(argc >= 2 && !strcmp(argv[1], "all")) system("gcc cls.c -o cls && gcc calc.c -o calc && gcc del.c -o del && gcc edit.c -o edit && gcc help.c -o help && gcc info.c -o info && gcc list.c -o list && gcc mdir.c -o mdir && gcc man.c -o man && gcc outf.c -o outf && gcc rdir.c -o rdir");
-
-    else if(argc >= 2 && !strcmp(argv[1], "cls")) system("gcc cls.c -o cls");
-    else if(argc >= 2 && !strcmp(argv[1], "calc")) system("gcc calc.c -o calc");
-    else if(argc >= 2 && !strcmp(argv[1], "del")) system("gcc del.c -o del");
-    else if(argc >= 2 && !strcmp(argv[1], "edit")) system("gcc edit.c -o edit");
-    else if(argc >= 2 && !strcmp(argv[1], "help")) system("gcc help.c -o help");
-    else if(argc >= 2 && !strcmp(argv[1], "info")) system("gcc info.c -o info");
-    else if(argc >= 2 && !strcmp(argv[1], "list")) system("gcc list.c -o list");
-    else if(argc >= 2 && !strcmp(argv[1], "man")) system("gcc man.c -o man");
-    else if(argc >= 2 && !strcmp(argv[1], "mdir")) system("gcc mdir.c -o mdir");
-    else if(argc >= 2 && !strcmp(argv[1], "outf")) system("gcc outf.c -o outf");
-    else if(argc >= 2 && !strcmp(argv[1], "rdir")) system("gcc rdir.c -o rdir");
-
-    else printf("Not a known app\n");
-    */
     return 0;
 }

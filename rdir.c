@@ -6,13 +6,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+#ifdef __WIN32
+#define rdir "rmdir "
+#else
+#define rdir "rm -r "
+#endif
+
 int main(int argc, char **argv) {
    if(argc >= 2 && !strcmp(argv[1], "-v")) {
         printf("RDIR        |V1.0\n");
         return 0;
     } 
     else if(argc >= 2) {
-        char dir[256] = "rm -r ";
+        char dir[256] = rdir;
         strcat(dir, argv[1]);
         system(dir);
     }

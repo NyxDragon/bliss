@@ -1,3 +1,68 @@
+Changelog December 2, 2022 05:05
+CrystalCraft Studios
+
+Changes:
+--------------------------------------------------------------------------------
+bliss.c {
+    Appended version to 1.0 to be more accurate with release information.
+}
+cls.c {
+    Added Windows support.
+}
+del.c {
+    Added Windows support.
+}
+info.c {
+    Updated to modern apps.txt support, rather than hard-coded applications.
+}
+list.c {
+    Added Windows support.
+}
+mdir.c {
+    Added Windows support.
+}
+outf.c {
+    Fixed issue where files were loaded all at once, and appended to a line-by-line parsing method.
+}
+rc.c {
+    Updated to modern apps.txt support, rather than hard-coded applications.
+}
+rdir.c {
+    Added Windows support.
+}
+project {
+    Removed apps.txt entry for man until further notice. App may be removed permanently.
+}
+
+
+
+Issues:
+--------------------------------------------------------------------------------
+bliss.c {
+    No longer can run system commands due to current limit of 2 tokens per input.
+}
+man.c {
+    Current version relies on text output methods, making it messy and inefficient.
+    Current version makes it significantly more difficult to update the manual file itself. 
+    Current version of man.c is significantly outdated thanks to software updates on other apps.
+}
+
+
+
+Plan:
+--------------------------------------------------------------------------------
+edit.c {
+    Fix file reading algorithm, and keep track of line number to allow loading of a particular line in a text file, as well as replacement of lines.
+}
+man.c {
+    Update manual to text file chapters in data/man folder. 
+    Update manual itself to include all new updates.
+}
+
+
+
+--------------------------------------------------------------------------------
+--------------------------------------------------------------------------------
 Changelog November 24, 2022 17:31
 CrystalCraft Studios
 

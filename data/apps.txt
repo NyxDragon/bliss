@@ -5,7 +5,6 @@ edit
 help
 info
 list
-man
 mdir
 outf
 rc
