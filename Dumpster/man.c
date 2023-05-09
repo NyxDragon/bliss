@@ -274,7 +274,7 @@ void fb() {
 int main(int argc, char **argv) {
     //Version information
     if(argc >= 2 && !strcmp(argv[1], "-v")) {
-        printf("MAN         |V1.0\n");
+        printf("MAN         |V1.0   |\n");
         return 0;
     }
     else if(argc >= 2 && !strcmp(argv[1], "help")) {

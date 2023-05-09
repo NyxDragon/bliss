@@ -1,6 +1,7 @@
 //EDIT v2.0
 //CrystalCraft Studios 2022
 
+//Why TF didn't I comment this code when writing? Its garbage anyway, though! It barely works!
 #include <ctype.h>
 #include <stdio.h>
 #include <stdlib.h>
@@ -137,7 +138,7 @@ void help() {
 int main(int argc, char **argv) {
     //Version info
     if (argc >= 2 && !strcmp(argv[1], "-v")) {
-        printf("EDIT        |V2.0\n");
+        printf("EDIT        |V2.0   |\n");
         return 0;
     }
     else if(argc >= 2) {
@@ -154,24 +155,12 @@ int main(int argc, char **argv) {
             size_t length = 32;
             getline(&command, &length, stdin);
 
-            if(!strcmp(command, "exit\n")) {
-                return 0;
-            } 
-            else if(!strcmp(command, "cls\n")) {
-                system(sys_cls);
-            }
-            else if(!strcmp(command, "new\n")) {
-                editor(printLines);
-            }
-            else if(!strcmp(command, "help\n")) {
-                help();
-            }
-            else if(!strcmp(command, "load\n")) {
-                load(printLines);
-            }
-            else {
-                printf("Unknown command.\n\n");
-            }
+            if(!strcmp(command, "exit\n")) return 0;
+            else if(!strcmp(command, "cls\n")) system(sys_cls);
+            else if(!strcmp(command, "new\n")) editor(printLines);
+            else if(!strcmp(command, "help\n")) help();
+            else if(!strcmp(command, "load\n")) load(printLines);
+            else printf("Unknown command.\n\n");
         } 
     }
 }

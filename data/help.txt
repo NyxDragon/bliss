@@ -4,10 +4,11 @@ General Commands
 +-------+----------------------------------------------------------------------+
 |cls    | Clear terminal                                                       |
 |calc   | Commissions price calculator                                         |
+|conv   | Convert files to mp4 in convert folder                               |
 |del    | Deletes file                                                         |
 |edit   | Launch BLEdit software                                               |
 |exit   | Ends BLISS session                                                   |
-|help   | Displays this guide OR input help [command] for specific help        |
+|help   | Displays help guide OR input help [command] for specific help        |
 |info   | Displays current build information                                   |
 |list   | Lists current directory contents                                     |
 |man    | Launches BLISS manual viewer                                         |

@@ -1,5 +1,5 @@
 cls
-calc
+conv
 del
 edit
 help
@@ -9,3 +9,4 @@ mdir
 outf
 rc
 rdir
+ktest

@@ -1,126 +1,172 @@
-BLISS Manual
+1]BLISS Manual (Revision 6-5-2023)
 
-What is BLISS? 
-    BLISS is the Basic Library of Integrated Software Solutions, an app
-collection developed for me to learn how to write C starting from no
-experience. I started this project in June of 2022, and V1.0 is to release
-within December of 2022. 
-    BLISS is meant to serve as an example of simplistic, modular, lightweight
-terminal software. It is not intended for actual use, but more as a learning
-tool, or something to experiment with.
+For those of you who wish to use BLISS, please read this manual through, or
+just go ahead and try to figure it out for yourself, I don't control your life!
+/
 
+2]Dependencies:
 
+BLISS requires having GCC installed on your computer, and builds from 11-15-22
+and earlier require an install of nCurses, newer builds do not require it.
 
-How do I compile?
-    Well, if you've made it this far, you've either found the GitHub repo, or
-have downloaded it already. Either way, you know you need to download the 
-project to begin. Once you have this done, on Windows, Mac, and Linux, ensure
-you have GCC installed, then simply open a terminal window in the folder you 
-downloaded BLISS to, then execute:
+The CONV utility requires an install of ffmpeg.
+/
 
-[gcc bliss.c -o bliss]
+3]Compiling:
 
-    From here, on Linux or Mac, to launch BLISS, execute:
+Compiling BLISS is as simple as running the following commands:
 
-[./bliss]
+1 - gcc bliss.c -o bliss
+2 - ./bliss
+3 - rc
+4 - rc all
 
-    For Windows, execute:
+3.1]What do those four commands do?
 
-[bliss]
+The first command, [gcc bliss.c -o bliss] tells GCC to export the bliss app as
+bliss on your computer.
 
-    At this point, you should be greeted with the following display:
+The second command [./bliss] runs the bliss app you just compiled with GCC.
 
-BLISS Version 1.0            | CrystalCraft Studios 2022
------------------------------+--------------------------------------------------
+The third command [rc] tells BLISS to use GCC to compile the compiling utility.
 
-:
+The fourth command [rc all] launches the recompile utility, which, when given
+the all flag, compiles every single app found in the apps.txt file. If it
+cannot find your app in the folder, GCC will output an error. If your app will
+not compile, try checking if you added its name in apps.txt!
 
-    Your cursor will be immediately following the colon, which serves as your 
-prompt. From this prompt, to compile the rest of BLISS, you must first execute:
+4]BLISS:
 
-[rc]
+BLISS is incredibly simple on its own, all it does is check for one of a few
+hard-coded tools, such as the [exit] command, [rc] command, or [splash]
+command. Each of these commands does something that couldn't be made into its
+own modular app, and thus, were hard-coded. The first versions of BLISS used
+entirely hard-coded tools, which would add about 20 lines of code per app you
+wanted to use. 
 
-    This will recompile the recompiling utility (RC), allowing you to recompile
-other modules. Assuming you desire a full install of BLISS, you may execute:
+To use a third-party app, or one of your own design, simply put its name on a
+new line in the apps.txt file, located in the data folder. This will allow RC
+to locate it, and BLISS to locate it. 
 
-[rc all]
+BLISS works by opening the apps.txt file, and checking the first operator in a
+command against the list of apps provided. If it matches any of them, it will
+build a command to launch the app. This method makes BLISS infinitely more
+modular, and easier to work with for an end-user, but also allows garbage data
+in the apps.txt file to cause errors.
 
-    This will cause the RC application to parse {data/apps.txt} and compile
-every program on the list. If you do not wish to use certain apps from the
-list, remove them from this list.
+Integrated commands: 
 
+splash: Displays the splash text. exit: Quits BLISS. rc: Recompiles the RC
+utility.
 
+5]CLS Command:
 
-How do I install my own software?
-    Assuming your software can be executed through the command line, it is just
-as simple as appending its name to the {data/apps.txt} file, however, if you
-wish to avoid having errors when running the [info] command, you need to include
-a bit of code that reads the -v flag. You can find this code at the beginnings
-of the main function in every module I have written, and it does include the
-text within the parentheses of the main function declaration.
-    If you are not worried about breaking the text formatting of the info table,
-you do not have to include this. It is absolutely not necessary for the function
-of this application suite.
+Format - [cls]
 
+The CLS command simply clears the screen. I made this a module, as adding it to
+BLISS itself made BLISS unnecessarily large, and complex. BLISS is about
+maximizing modularity, rather than maximizing processor efficiency or filesize.
 
+6]CONV Command:
 
-I have installed an app, but I want it in the help guide.
-    To add an external app to the help guide, open {data/help.txt} and write in
-your help information for that app. Do note, if you input more characters than
-the default entries per line, they will wrap in most terminal emulators, causing
-formatting errors. This will not damage anything, but it may look bad.
+Format - [conv]
 
+CONV is the video conversion utility. This app was made to make converting MKV
+files en masse far easier, as all you do is type CONV and every non-MP4 file
+in the convert folder will be converted to MP4. The only thing to avoid is
+giving it non-video files, as this will have unpredictable results.
 
+7]DEL Command:
 
-How do I uninstall apps?
-    This is probably the easiest part of BLISS' design, other than installing,
-all you need to do is open {data/apps.txt} in any text editor, and remove the
-app's name from the list. 
+Format - [del] [filename.extention]
 
+DEL deletes specified file. Do be warned, this does NOT move it to a recycle
+bin folder, this PERMANENTLY deletes files. ONLY use this if you are certain
+you want the file gone!
 
+8]EDIT Command:
 
-How do I uninstall BLISS?
-    Simply navigate to the root folder and delete the whole thing. This app does
-not move beyond the BLISS folder. Do note, any subdirectories will be destroyed
-in this process, so back up any files you desire to keep.
+Format - [edit] OR [edit] [file]
 
+EDIT is a simplistic text editor, with numerous flaws. I suggest using Nemo
+for the time being, but EDIT is functional enough to use. 
 
+When you run EDIT with the [edit] command only, you will load to the EDIT
+menu, which allows you to load files, save files, exit, or ask for help. 
 
-How do I open the BLISS help guide?
-    Whilst BLISS is running, type [help] and hit enter. The help guide should
-load, assuming help is in apps.txt, and help.c has been compiled!
+To open a new file, type [new] and hit enter. To open a file, type [open] 
+and hit enter. To load a file, type [open] and hit enter. For help, type [help]
+and hit enter. To exit, type [exit] and hit enter.
 
+Within the editor: To save a file, on a new line, type [s()] and hit enter to
+save a file, to go back to the menu, type [e()] on a new line and hit enter.
 
+8]HELP Command:
 
-I have found a bug, what do I do?
-    Please, inform me of the bug on the official BLISS project GitHub, and I
-will work on it as soon as I can!
+Format: [help]
 
+This tool is great for quick overviews on different tools in the BLISS project,
+and runs by using outf to display help.txt from in the data folder! When you
+make your own apps, it is suggested to add your own entries into the HELP table
+to help you remember what to do, and what your app does! Just keep to an 80
+column table format, otherwise it might not display right on some terminals!
 
+9]INFO Command:
 
-I have a weird error, what do I do?
-    Assuming you have found the one and only error code within BLISS, see the
-terribly short list of error codes below. If you have the APPS-00 error, you
-only need to make a file named apps.txt in the {bliss/data/} folder. You will
-need to append program names into it, and a copy of the appslist will be
-included below.
+Format: [info] OR [info] [all] OR [info] [appName]
 
-{data/apps.txt} contents:
+The information utility is great for printing version data on different apps. 
+Any BLISS-compliant apps must accept a -v flag for printing version data, and
+the info command simply launches an app with a -v flag, to print its version
+data.
 
-cls
-del
-edit
-help
-info
-list
-mdir
-outf
-rc
-rdir
+This app works by checking the contents of the apps.txt file, then builds a
+launch command ending in -v to tell the app to print its version data. There
+are three ways to use this app:
 
+[info]           Prints the version data of the info app itself.
+[info] [all]     Prints the version data of all apps in apps.txt.
+[info] [appName] Prints the version data of the specified app, if in apps.txt
 
+9]LIST Command:
 
-Error codes: 
-    APPS-00: Missing data/apps.txt file. Fix: Create bliss/data/apps.txt 
-file, or check that it exists.
-    
+Format: [list]
+
+Prints the contents of the current directory. In the case of BLISS, it will be
+the folder BLISS is located in. This is the same as the ls command or dir
+command.
+
+10]MDIR Command:
+
+Format: [mdir] [path]
+
+MDIR makes a directory at the specified path. This works the same way as the
+mkdir command. 
+
+11]OUTF Command:
+
+Format: [outf] [pathToFile.extention]
+
+OUTF loads a file, and then prints the contents of it, line by line. This file
+is printed to the terminal directly, and is not editable in any way. This is a
+good way to print something like the HELP menu, like is done in BLISS.
+
+12]RC Command:
+
+Format: [rc] [all] OR [rc] [appName]
+
+RC is the recompiler utility. BLISS itself can compile the RC Utility, but RC
+is needed to automatically compile every other app in BLISS. RC scans the
+apps.txt file, and, if provided an [all] flag, will recompile or compile every
+app in the list using GCC. If you provide an app name instead of [all], RC
+will compile only that application. 
+
+13]RDIR Command:
+
+Format: [rdir] [pathToDirectory]
+
+RDIR is the folder deletion tool. It works the same as rm -r, and rmdir. Once
+a directory is deleted, it is NOT moved to the recycle bin, and is PERMANENTLY
+gone. Only use this if you are ABSOLUTELY sure you want a directory gone!
+
+<<
