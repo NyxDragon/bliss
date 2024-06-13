@@ -1,5 +1,5 @@
-//Help v1.1
-//CrystalCraft Studios 2022
+//Help v2.0
+//CrystalCraft Studios 2022-24
 
 #include <ctype.h>                              //Include the ctype.h header file
 #include <stdio.h>                              //Include the stdio.h header file

@@ -1,5 +1,5 @@
 //INFO v1.0
-//CrystalCraft Studios 2022
+//CrystalCraft Studios 2022-24
 
 #include <stdio.h>                                                                                    //Include the stdio.h header file
 #include <stdlib.h>                                                                                   //Include the stdlib.h header file
@@ -18,9 +18,8 @@ int main(int argc, char **argv) {                                               
 
     char *appslist = "data/apps.txt";                                                                 //Define a new string with the contents "data/apps.txt"
     FILE *openFile = fopen(appslist, "r");                                                            //Define a FILE variable, named openfile, with the contents appslist as its value, and only allow it to be read from
-    if(!openFile) {                                                                                   //If the apps.txt file is not found;
-        printf("\nError opening 'data/apps.txt': File not found, please replace and try again!\n");   //Print error information
-    }
+    if(!openFile) printf("\nError opening 'data/apps.txt': File not found, please replace and try again!\n");//If the apps.txt file is not found, print error information
+    
     char bufferA[256];                                                                                //Define a new bufferA variable with an arbitrary length
     if(!strcmp(argv[1], "all")) {                                                                     //Print all app info from apps.txt
       printf("APP         |Version|\n");                                                              //Print the table header ASCII art and text
@@ -49,7 +48,7 @@ int main(int argc, char **argv) {                                               
         }
       }
     }
-  fclose(openFile);                                                                                   //Close openFile, freeing memory
+    fclose(openFile);                                                                                   //Close openFile, freeing memory
 	printf("\n");                                                                                     //Print a blank line
 	return 0;                                                                                         //Exit without error
 }

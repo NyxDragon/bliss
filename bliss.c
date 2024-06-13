@@ -1,9 +1,23 @@
 /*******************************************************************************
  * BLISS Version 1.0 POSIX Compliant Edition                                   *
- * CrystalCraft Studios 2022                                                   *
  *                                                                             *
- * This is free, open-source software, provided without a license. It comes as-*
- * is, with no warranty or guaranteed software support.                        *
+ * Copyright 2023-24, CrystalCraft Studios                                     *
+ * Permission is hereby granted, free of charge, to any person obtaining a copy*
+ * of this software and associated documentation files (the "Software"), to    *
+ * deal in the Software without restriction, including, without limitation the *
+ * rights to use, copy, modify, merge, publish, distribute, sublicense, and/or *
+ * sell copies of the Software, and to permit persons to whom the Software is  *
+ * furnished to do so, subject to the following conditions:                    *
+ *                                                                             *
+ * The above copyright notice and this permission notice shall be included in  *
+ * all copies or substantial portions of the Software.                         *
+ *                                                                             *
+ * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR  *
+ * IMPLIED, INCLUDING, BUT NOT LIMITED TO THE WARRANTIES OF NONINFRINGEMENT. IN*
+ * NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,    *
+ * DAMAGES OR OTHER LIABILITY, WETHER IN AN ACTION OF CONTRACT, TORT OR        *
+ * OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE   *
+ * USE OR OTHER DEALINGS IN THE SOFTWARE.                                      *
  *******************************************************************************/
 
 #include <ctype.h>                                                                                                      //Include the ctype.h header file
@@ -12,7 +26,8 @@
 #include <string.h>                                                                                                     //Include the string.h header file
 
 void splash() {                                                                                                         //Begin the splash routine
-    printf("BLISS Version 1.0            | CrystalCraft Studios 2022 - 23\n");                                          //Print version information and developer information
+    system("clear");                                                                                                    //Clear the screen to start with a clean terminal
+    printf("BLISS Version 1.0            | CrystalCraft Studios 2022 - 24\n");                                          //Print version information and developer information
     printf("-----------------------------+--------------------------------------------------\n\n");                     //Print ASCII text box border
 }
 
@@ -23,29 +38,29 @@ int main(int argc, char **argv) {                                               
     }
     char *command = NULL;                                                                                               //Default the command to NULL, so no garbage is in it at start
     char delim[] = " ";                                                                                                 //Set the arbitrary delimiter character. I chose a space
-    char *tokenCommand[2] = {};                                                                                         //Set the *tokenCommand command to be an empty array with an arbitrary maximum length
+    char *tokenCommand[2] = {};                                                                                         //Set the token-Command command to be an empty array with an arbitrary maximum length
     int found = 0;                                                                                                      //Set the application found variable to false, as if it were true, it'd always think the app is found
 
     splash();                                                                                                           //Run the splash routine
 
     while(1) {                                                                                                          //While 1 is 1, so run forever
-        printf(":");                                                                                                   //Print the arbitrary prompt text
+        printf(">");                                                                                                   //Print the arbitrary prompt text
         size_t length = 128;                                                                                            //Set an arbitrary command character limit
         getline(&command, &length, stdin);                                                                              //Take user input as &command, with a length of &length, as standard input
 
         char *ptr = strtok(command, delim);                                                                             //Tokenize command
         int loopCounter = 0;                                                                                            //Set the loop counter to start counting at 0
         while(ptr != NULL) {                                                                                            //Run while the pointer isn't NULL
-            tokenCommand[loopCounter] = ptr;                                                                            //Set tokenCommand at the loopCounter value to the current pointer
+            tokenCommand[loopCounter] = ptr;                                                                            //Set token-Command at the loopCounter value to the current pointer
             ptr = strtok(NULL, delim);                                                                                  //Break the command at the delimiter
             loopCounter ++;                                                                                             //Increment the loopCounter, keeping track of how many tokens we have
         }
 
         if (tokenCommand[0][strlen(tokenCommand[0]) - 1] == '\n') tokenCommand[0][strlen(tokenCommand[0]) - 1] = '\0';  //Strip newline char from command if present
 
-        char *appslist = "data/apps.txt"; //path to appslist
-        FILE *openFile = fopen(appslist, "r");
-        if(!openFile) {
+        char *appslist = "data/apps.txt";                                                                               //Path to apps list
+        FILE *openFile = fopen(appslist, "r");                                                                          //Open the app list
+        if(!openFile) {                                                                                                 //If apps.txt is not found
             printf("\nError opening 'data/apps.txt': File not found, please replace and try again!");                   //Print the arbitrary "apps.txt not found" error.
         }
         else {                                                                                                          //Its an else... 
@@ -79,7 +94,7 @@ int main(int argc, char **argv) {                                               
                         }
                         else {                                                                                          //Execute if command has no flag
                             char cmd[512] = "./";                                                                       //Set the start of the syscmd as execute
-                            strcat(cmd, tokenCommand[0]);                                                               //Append the first part of tokenCommand to the cmd variable
+                            strcat(cmd, tokenCommand[0]);                                                               //Append the first part of token-Command to the cmd variable
                             system(cmd);                                                                                //Execute the command we built. (Research new ways to do this that don't require a syscall)
                         }
                     }
@@ -88,9 +103,9 @@ int main(int argc, char **argv) {                                               
             if (found == 1) found = 0;                                                                                  //Check if the app is in apps.txt
             else printf("\nApp Not Found in apps.txt!\n");                                                              //Print app not found error
             fclose(openFile);                                                                                           //Close the apps.txt file to ensure memory is clear as much as possible
-                                                
-           tokenCommand[0] = NULL;                                                                                      //Clear value of tokenCommand[0] to ensure you start fresh
-           tokenCommand[1] = NULL;                                                                                      //Clear flag position 1 of tokenCommand to ensure you don't pass the last command's flag to the new command
+                                            
+            tokenCommand[0] = NULL;                                                                                     //Clear value of token-Command[0] to ensure you start fresh
+            tokenCommand[1] = NULL;                                                                                     //Clear flag position 1 of token-Command to ensure you don't pass the last command's flag to the new command
         }
     }
 }

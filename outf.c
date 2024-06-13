@@ -1,5 +1,5 @@
 //OUTF V1.0
-//CrystalCraft Studios 2022
+//CrystalCraft Studios 2022-24
 
 #include <ctype.h>                                                                         //Include the ctype.h header file
 #include <stdio.h>                                                                         //Include the stdio.h header file
@@ -23,10 +23,10 @@ int main(int argc, char **argv) {                                               
     if(!openFile) {                                                                        //Execute if there is no file found
     printf("\nError opening file: Does not exist.\n\n");                                   //Print error text (I could use perror if I knew how it worked)
     } 
-    else {
+    else {                                                                                 //Otherwise
         if (argv[1][strlen(argv[1]) - 1] == '\n') argv[1][strlen(argv[1]) - 1] = '\0';     //Strip newline char from command if present
 
-        char readLine[1024];
+        char readLine[1024];                                                               //Define a new variable with an arbitrary length named readLine
         while(fgets(readLine, sizeof(readLine), openFile)) {                               //Read line of text and compare to input command
         if(readLine[strlen(readLine) - 1] == '\n') readLine[strlen(readLine) - 1] = '\0';  //Strip newline char from lines
         printf("%s\n", readLine);                                                          //Yes, I know this undoes the newline that I just removed, buuuuuut its to ensure 100% of lines have one newline instead of having some lines have none and feel left out.

@@ -1,6 +1,6 @@
 /************************************************************
  * BLISS Video Converter Applet V1.0                        *
- * CrystalCraft Studios, 2023                               *
+ * CrystalCraft Studios, 2023-24                            *
  * Requires FFMPEG to work, as well as h264!                *
  ************************************************************/
 #include <stdio.h>                                                                  //Include the stdio.h header file
